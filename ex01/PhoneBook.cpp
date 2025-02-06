@@ -12,6 +12,13 @@ public:
 	std::string phone_number;
 };
 
+bool isEOF(void)
+{
+	if (std::cin.eof())
+		return (true);
+	return (false);
+}
+
 int	input_AddSerchExit(std::string command)
 {
 	if (command == "ADD")
@@ -82,49 +89,63 @@ void initialization_contact(PhoneBook &phonepook)
 	std::cout << "-------------------------------------------" << std::endl;
 }
 
-void print(PhoneBook PhoneBook)
+void print(const PhoneBook &PhoneBook)
 {
-	if (PhoneBook.first_name == "")
+	if (PhoneBook.first_name.empty())
 		return;
-	std::cout << PhoneBook.first_name << std::setw(10) << PhoneBook.last_name << std::setw(10);
-	std::cout << PhoneBook.nickname << std::setw(10) << PhoneBook.phone_number << std::endl;
+    std::cout << std::setw(15) << std::left << PhoneBook.first_name
+              << std::setw(15) << std::left << PhoneBook.last_name
+              << std::setw(15) << std::left << PhoneBook.nickname
+              << std::setw(15) << std::left << PhoneBook.phone_number
+              << std::endl;
 }
+
 void search_print_phonebook(PhoneBook *PhoneBook)
 {
-	int i = 0;
-	std::cout << "first_name" << std::string(10, ' ') << "last_name" << std::string(10, ' ');
-	std::cout << "nickname" << std::string(10, ' ') << "phone_number" << std::endl;
-
-	while(i < 8)
+	if (PhoneBook->first_name.empty())
 	{
-		print(PhoneBook[i]);
-		i++;
+		std::cout << "Empty Phonebook " << std::endl;
+		return ;
 	}
-}
+    std::cout << std::setw(15) << std::left << "First Name"
+              << std::setw(15) << std::left << "Last Name"
+              << std::setw(15) << std::left << "Nickname"
+              << std::setw(15) << std::left << "Phone Number"
+              << std::endl;
 
+	std::cout << std::string(60, '-') << std::endl;
+
+    for (int i = 0; i < 8; ++i)
+        print(PhoneBook[i]);
+}
 
 int	main()
 {
 	PhoneBook phonepook[8];
 	std::string command;
 	int	i = 0;
-
-	std::cout << "Entering ADD, SEARCH and EXIT. " << std::endl;
 	
 	while (1)
 	{
+		std::cout << "Entering ADD, SEARCH and EXIT. " << std::endl;
     	std::cin >> command;
 		if (input_AddSerchExit(command) == 1)
+		{
 			initialization_contact(phonepook[i]);
+			i++;
+			if (i % 8 == 0)
+				i = 0;
+		}
 		else if (input_AddSerchExit(command) == 2)
 			search_print_phonebook(phonepook);
 		else if (input_AddSerchExit(command) == 3)
-			std::cout << "EXXXXXIIIIIIIIIIITTTTTTTTTTTTTT" << std::endl;
+			break;
 		else
 			std::cout << "Invalid command. Please enter ADD, SEARCH, or EXIT." << std::endl;
-		i++;
-		if (i % 8 == 0)
-			i = 0;
+		std::cout << i << std::endl;
+		if (isEOF()) {
+			break ;
+		}
 	}
 	return 0;
 }
