@@ -1,6 +1,7 @@
 #include <cstddef>
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 class PhoneBook
 {
@@ -17,7 +18,7 @@ int	input_AddSerchExit(std::string command)
 		return 1;
 	else if (command == "SEARCH")
 		return 2;
-	else if (command == "SEARCH")
+	else if (command == "EXIT")
 		return 3;
 	return 0;
 }
@@ -44,7 +45,7 @@ std::string initialization_contact_validation(int landmark)
 	return "";
 }
 
-void initialization_contact(PhoneBook phonepook)
+void initialization_contact(PhoneBook &phonepook)
 {
 	std::cout << "Enter first_name" << std::endl;
 	while (1)
@@ -81,15 +82,26 @@ void initialization_contact(PhoneBook phonepook)
 	std::cout << "-------------------------------------------" << std::endl;
 }
 
+void print(PhoneBook PhoneBook)
+{
+	if (PhoneBook.first_name == "")
+		return;
+	std::cout << PhoneBook.first_name << std::setw(10) << PhoneBook.last_name << std::setw(10);
+	std::cout << PhoneBook.nickname << std::setw(10) << PhoneBook.phone_number << std::endl;
+}
 void search_print_phonebook(PhoneBook *PhoneBook)
 {
 	int i = 0;
-
 	std::cout << "first_name" << std::string(10, ' ') << "last_name" << std::string(10, ' ');
 	std::cout << "nickname" << std::string(10, ' ') << "phone_number" << std::endl;
-	std::cout << PhoneBook->first_name[i] << std::string(10, ' ') << PhoneBook->last_name[i] << std::string(10, ' ');
-	std::cout << PhoneBook->nickname[i] << std::string(10, ' ') << PhoneBook->phone_number[i] << std::endl;
+
+	while(i < 8)
+	{
+		print(PhoneBook[i]);
+		i++;
+	}
 }
+
 
 int	main()
 {
