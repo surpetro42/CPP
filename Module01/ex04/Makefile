@@ -1,12 +1,9 @@
-NAME = zomb
+NAME = ex04
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC =  Zombie.cpp \
-	   main.cpp \
-	   newZombie.cpp \
-	   randomChump.cpp
+SRC = main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

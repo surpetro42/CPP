@@ -2,11 +2,14 @@
 
 int main()
 {
-    Zombie 
-    std::string input_name;
+    Zombie *zombie;
+    std::string name;
 
-
-    std::cin >> input_name;
-
-    return 0;
+    std::cout << "name:";
+    std::cin >> name;
+    std::cout << std::endl;
+    randomChump(name);
+    zombie = newZombie(name);
+    delete zombie;
+    return (0);
 }

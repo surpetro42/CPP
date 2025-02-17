@@ -2,6 +2,7 @@
 #define ZOMBIE_HPP
 
 #include <iostream>
+#include <limits>
 #include <string>
 
 class Zombie
@@ -9,13 +10,12 @@ class Zombie
 private:
     std::string name;
 public:
+    Zombie(std::string name);
+    Zombie();
     void SetName(std::string value);
     std::string GetName();
     void    announce(void);
 };
 
-Zombie* newZombie( std::string name );
-void randomChump( std::string name );
-
-
-#endif 
+Zombie* zombieHorde( int N, std::string name);
+#endif
