@@ -28,7 +28,7 @@ Brain::~Brain()
 	std::cout << "Brain destructor called" << std::endl;
 }
 
-const std::string Brain::GetIdea(size_t i)
+const std::string Brain::GetIdea(size_t i) const
 {
 	if (i < 100)
 		return this->ideas[i];
@@ -36,7 +36,7 @@ const std::string Brain::GetIdea(size_t i)
     	return ("100 ideas per brain!");
 }
 
-void Brain::SetIdea(size_t i, std::string ideas)
+void Brain::SetIdea(size_t i, const std::string ideas)
 {
 	if (i < 100)
 		this->ideas[i] = ideas;

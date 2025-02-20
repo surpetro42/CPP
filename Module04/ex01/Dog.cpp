@@ -5,15 +5,15 @@
 Dog::Dog()
 {
 	Animal::type = "Dog";
+	_isBrain = new Brain;
 	std::cout << "Dog constructor called" << std::endl;
 }
 
 Dog::Dog(const Dog &copy)
 {
 	std::cout << "Dog Copy constructor called" << std::endl;
-	delete _brain;
-	this->_brain = new Brain;
-	this->_brain = copy._brain;
+	this->type = copy.type;
+	_isBrain = new Brain(*copy._isBrain);
 }
 
 Dog &Dog::operator=(const Dog &copy)
@@ -21,10 +21,10 @@ Dog &Dog::operator=(const Dog &copy)
 	std::cout << "Dog Copy assignment called" << std::endl;	
 	if(this != &copy)
 	{
-		delete this->_brain;
-		this->_brain = new  Brain;
-		for(int i = 0; i < 100; ++i)
-			this->_brain[i] = copy._brain[i];
+		this->type = copy.type;
+		if (_isBrain)
+			delete(_isBrain);
+		_isBrain = new Brain(*copy._isBrain);
 	}
 	return *this;
 }
@@ -37,15 +37,18 @@ void Dog::makeSound() const
 Dog::~Dog()
 {
 	std::cout << "Dog destructor called" << std::endl;
-	delete this->_brain;
+	delete _isBrain;
 }
 
-const std::string Dog::getIdeas(size_t i) const
+void Dog::getIdea() const
 {
-	return this->_brain->GetIdea(i);
+	for(int i = 0; i < 100; ++i)
+	{
+		std::cout << "Dog idea " << i << ": " << this->_isBrain->GetIdea(i) << std::endl;
+	}
 }
 
-void Dog::setIdea(size_t i, std::string idea) const
+void Dog::setIdea(int index, const std::string &idea)
 {
-	this->_brain->SetIdea(i, idea);
+	this->_isBrain->SetIdea(index, idea);
 }

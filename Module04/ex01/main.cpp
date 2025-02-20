@@ -3,7 +3,6 @@
 #include "WrongCat.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
-// #include "Brain.hpp"
 
 void	test_constructor()
 {
@@ -26,9 +25,7 @@ void	test_constructor()
 	delete(meta);
 	delete(i);
 	delete(j);
-	// delete(x);
 
-	
 	const WrongAnimal* WrongMeta = new WrongAnimal();
 	const WrongAnimal* WrongI = new WrongCat();
 
@@ -92,30 +89,44 @@ void test_copy_assignment()
     std::cout << "----- Test Copy Constructor and Assignment Operator and Copy Constructor END -----" << std::endl;
 }
 
-// void test_brain()
-// {
-//     std::cout << "----- Test Brain START -----" << std::endl;
-//     Dog dog1;
-//     dog1.setIdea(0, "I want a bone!");
-//     dog1.setIdea(1, "I love running!");
+void test_deep_copy() {
+    std::cout << "----- Test Deep Copy START -----" << std::endl;
 
-//     Dog dog2 = dog1; // Проверка глубокого копирования
+    Animal* animals[6];
 
-//     std::cout << "Dog1 Idea 0: " << dog1.getIdea(0) << std::endl;
-//     std::cout << "Dog1 Idea 1: " << dog1.getIdea(1) << std::endl;
-//     std::cout << "Dog2 Idea 0: " << dog2.getIdea(0) << std::endl;
-//     std::cout << "Dog2 Idea 1: " << dog2.getIdea(1) << std::endl;
+    for (int i = 0; i < 3; ++i) {
+        animals[i] = new Dog();
+        animals[i + 3] = new Cat();
+    }
 
-//     std::cout << "----- Test Brain END -----" << std::endl;
-// }
+    animals[0]-> setIdea(0, "Dog idea 0");
+    animals[3]-> setIdea(0, "Cat idea 0");
 
+    Animal* dog_copy = new Dog(*static_cast<Dog*>(animals[0]));
+    Animal* cat_copy = new Cat(*static_cast<Cat*>(animals[3]));
+
+    std::cout << "Original Dog Idea 0: " << static_cast<Dog*>(animals[0])->getIdea() << std::endl;
+    std::cout << "Copied Dog Idea 0: " << static_cast<Dog*>(dog_copy)->getIdea() << std::endl;
+
+    std::cout << "Original Cat Idea 0: " << static_cast<Cat*>(animals[3])->getIdea() << std::endl;
+    std::cout << "Copied Cat Idea 0: " << static_cast<Cat*>(cat_copy)->getIdea() << std::endl;
+
+    // Удаление объектов
+    for (int i = 0; i < 6; ++i) {
+        delete animals[i];
+    }
+    delete dog_copy;
+    delete cat_copy;
+
+    std::cout << "----- Test Deep Copy END -----" << std::endl;
+}
 int main()
 {
 	std::cout << "\n----- project > (Polymorphism) -----" << std::endl;
 	test_constructor();
 	test_copy_assignment();
 	primary_part();
-	// test_brain();
 	wrong_part();
+	test_deep_copy();
 	return 0;
 }

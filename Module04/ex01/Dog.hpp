@@ -6,7 +6,7 @@
 class Dog : public Animal
 {
 private:
-	Brain *_brain;
+	Brain *_isBrain;
 public:
 	Dog ();
 	Dog (const Dog &copy);
@@ -14,6 +14,6 @@ public:
 	virtual ~Dog();
 
 	void makeSound() const;
-	const std::string getIdeas(size_t i) const;
-	void setIdea(size_t i, std::string idea) const;
+	void getIdea() const;
+	void setIdea(int index, const std::string &idea);
 };
