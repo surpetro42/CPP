@@ -1,4 +1,5 @@
 #include "PhoneBook.hh"
+#include <string>
 
 bool isEOF(void)
 {
@@ -40,13 +41,23 @@ std::string initialization_contact_validation(int landmark)
 	return "";
 }
 
+int	inspect(std::string str)
+{
+	for(int i = 0; str[i]; ++i)
+	{
+		if(!(std::isalpha(str[i])))
+			return 0;
+	}
+	return 1;
+}
+
 void initialization_contact(PhoneBook &phonepook)
 {
 	std::cout << "Enter first_name" << std::endl;
 	while (1)
 	{
 		phonepook.first_name = initialization_contact_validation(1);
-		if (std::isalpha(phonepook.first_name[0]))
+		if (inspect(phonepook.first_name) == 1)
 			break ;
 		std::cout << "Your input first_name is incorrect, please try again " << std::endl;
 	}
@@ -54,7 +65,7 @@ void initialization_contact(PhoneBook &phonepook)
 	while (1)
 	{
 		phonepook.last_name = initialization_contact_validation(1);
-		if (std::isalpha(phonepook.last_name[0]))
+		if (inspect(phonepook.last_name) == 1)
 			break ;
 		std::cout << "Your input last_name is incorrect, please try again " << std::endl;
 	}
@@ -62,7 +73,7 @@ void initialization_contact(PhoneBook &phonepook)
 	while (1)
 	{
 		phonepook.nickname = initialization_contact_validation(1);
-		if (std::isalpha(phonepook.nickname[0]))
+		if (inspect(phonepook.nickname) == 1)
 			break ;
 		std::cout << "Your input nickname is incorrect, please try again " << std::endl;
 	}

@@ -7,7 +7,7 @@
 void	test_constructor()
 {
 	std::cout << "----- Test Constructors and Destructors START -----" << std::endl;
-	const Animal* meta = new Animal();
+	const Animal* meta = new Dog();
 	const Animal* x = new Dog();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
@@ -37,7 +37,7 @@ void	test_constructor()
 void	primary_part()
 {
 	std::cout << "----- (Animal) START -----" << std::endl;
-	const Animal* meta = new Animal();
+	const Animal* meta = new Cat();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 	std::cout << j->getType() << " " << std::endl;
@@ -70,22 +70,22 @@ void test_copy_assignment()
 {
     std::cout << "----- Test Copy Constructor and Assignment Operator and Copy Constructor START -----" << std::endl;
 	WrongAnimal originalWrongDog = WrongCat();
-	Animal originalDog = Dog();
-	Animal originalCat = Cat();
-	Animal originalCat1 = originalCat;
+	Animal *originalDog = new Dog();
+	Animal *originalCat = new Cat();
 	
 
 	WrongAnimal WrongCopyCat = WrongCat();
-	Animal copyDog = Dog();
-	Animal CopyCat = Cat();
+	Animal *copyDog = new Dog();
+	Animal *CopyCat = new Cat();
 
 	copyDog = originalCat;
 	CopyCat = originalDog;
-	WrongCopyCat = originalWrongDog;
 
-	std::cout << "Copy dog - " << copyDog.getType() << std::endl;
-	std::cout << "Copy cat - " << CopyCat.getType() << std::endl;
+	std::cout << "Copy dog - " << copyDog->getType() << std::endl;
+	std::cout << "Copy cat - " << CopyCat->getType() << std::endl;
 	std::cout << "WrongCopy cat - " << WrongCopyCat.getType() << std::endl;
+	delete copyDog;
+	delete CopyCat;
     std::cout << "----- Test Copy Constructor and Assignment Operator and Copy Constructor END -----" << std::endl;
 }
 

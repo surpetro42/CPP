@@ -1,22 +1,20 @@
 #pragma once
 
-#include "Brain.hpp"
 #include <iostream>
 #include <cctype>
 #include <fstream>
 #include <regex>
 #include <cmath>
 
-class Animal
+class WrongAnimal
 {
 protected:
 	std::string type;
 public:
-	Animal ();
-	Animal (const Animal &copy);
-	Animal &operator=(const Animal &copy);
-	virtual ~Animal();
-
+	WrongAnimal();
+	WrongAnimal(const WrongAnimal &copy);
+	WrongAnimal &operator=(const WrongAnimal &copy);
+	virtual ~WrongAnimal();
+	void makeSound() const;
 	std::string getType() const;
-	virtual void makeSound() const;
 };
