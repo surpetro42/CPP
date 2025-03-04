@@ -1,120 +1,42 @@
-#include "PhoneBook.hh"
-#include <string>
+#include "PhoneBook.hpp"
 
-bool isEOF(void)
+PhoneBook::PhoneBook() : _contacts_count(0) {}
+
+void	PhoneBook::addContact()
 {
-	if (std::cin.eof())
-		return (true);
-	return (false);
+	static int index = 0;
+	contacts[index % 8].initialization_contact();
+	if (_contacts_count < 7)
+		_contacts_count++;
+	index++;
 }
 
-int	input_AddSerchExit(std::string command)
+void	PhoneBook::searchContact() const
 {
-	if (command == "ADD")
-		return 1;
-	else if (command == "SEARCH")
-		return 2;
-	else if (command == "EXIT")
-		return 3;
-	return 0;
-}
+	int index = 0;
+    std::cout << std::right << "Index" << "|"
+		<< std::setw(15) << std::right << "First Name" << "|"
+		<< std::setw(15) << std::right << "Last Name" << "|"
+		<< std::setw(15) << std::right << "Nickname"
+		<< std::endl;
+    for(int i = 0; i <= _contacts_count ; i++)
+        contacts[i].print(i);
 
-bool isValidName(const std::string &name, int landmark)
-{
-	if (landmark == 1 && name.empty() && std::isdigit(name[0]))
-        return false;		
-    return true;
-}
-
-std::string initialization_contact_validation(int landmark)
-{
-	std::string data;
-
-	std::cin >> data;
-	while(1)
+	std::cout << "Enter the index of the contact you want to search for (0-7): ";
+	if (!(std::cin >> index))
 	{
-		if (isValidName(data, landmark))
-			return data;
-		else
-			return "";
-	}
-	return "";
-}
-
-int	inspect(std::string str)
-{
-	for(int i = 0; str[i]; ++i)
-	{
-		if(!(std::isalpha(str[i])))
-			return 0;
-	}
-	return 1;
-}
-
-void initialization_contact(PhoneBook &phonepook)
-{
-	std::cout << "Enter first_name" << std::endl;
-	while (1)
-	{
-		phonepook.first_name = initialization_contact_validation(1);
-		if (inspect(phonepook.first_name) == 1)
-			break ;
-		std::cout << "Your input first_name is incorrect, please try again " << std::endl;
-	}
-	std::cout << "Enter last_name" << std::endl;
-	while (1)
-	{
-		phonepook.last_name = initialization_contact_validation(1);
-		if (inspect(phonepook.last_name) == 1)
-			break ;
-		std::cout << "Your input last_name is incorrect, please try again " << std::endl;
-	}
-	std::cout << "Enter nickname" << std::endl;
-	while (1)
-	{
-		phonepook.nickname = initialization_contact_validation(1);
-		if (inspect(phonepook.nickname) == 1)
-			break ;
-		std::cout << "Your input nickname is incorrect, please try again " << std::endl;
-	}
-	std::cout << "Enter phone_number" << std::endl;
-	while (1)
-	{
-		phonepook.phone_number = initialization_contact_validation(2);
-		if (std::isdigit(phonepook.phone_number[0]))
-			break ;
-		std::cout << "Your input phone_number is incorrect, please try again " << std::endl;
-	}
-	std::cout << "-------------------------------------------" << std::endl;
-}
-
-void print(const PhoneBook &PhoneBook)
-{
-	if (PhoneBook.first_name.empty())
+		if (std::cin.eof())
+			exit(1);
+    	std::cout << "Invalid input! Please enter a number." << std::endl;
+		std::cin.clear();
+		std::cin.ignore();
 		return;
-    std::cout << std::setw(15) << std::left << PhoneBook.first_name
-              << std::setw(15) << std::left << PhoneBook.last_name
-              << std::setw(15) << std::left << PhoneBook.nickname
-              << std::setw(15) << std::left << PhoneBook.phone_number
-              << std::endl;
-}
-
-void search_print_phonebook(PhoneBook *PhoneBook)
-{
-	if (PhoneBook->first_name.empty())
-	{
-		std::cout << "Empty Phonebook " << std::endl;
-		return ;
 	}
-    std::cout << std::setw(15) << std::left << "First Name"
-              << std::setw(15) << std::left << "Last Name"
-              << std::setw(15) << std::left << "Nickname"
-              << std::setw(15) << std::left << "Phone Number"
-              << std::endl;
-
-	std::cout << std::string(60, '-') << std::endl;
-
-    for (int i = 0; i < 8; ++i)
-        print(PhoneBook[i]);
+   if (index < 0 || index >= 8 || contacts[index].getFirstName().empty())
+	{
+        std::cout << "Invalid index or empty contact at this index." << std::endl;
+        return;
+    }
+    else
+	    contacts[index].print_index();
 }
-
