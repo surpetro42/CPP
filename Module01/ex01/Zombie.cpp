@@ -1,21 +1,24 @@
 #include "Zombie.hpp"
+#include <cstddef>
 
-void Zombie::SetName(std::string value)
+void Zombie::SetName(const std::string& value)
 {
 	name = value;
 }
 
-std::string	Zombie::GetName()
+void	Zombie::announce(int N, Zombie *zombie)
+{
+	for(std::size_t i = 0; i < N; ++i)
+		std::cout << "name: " << zombie->GetName() << std::endl;
+}
+
+std::string	Zombie::GetName() const
 {
 	return (name);
 }
 
-Zombie::Zombie () : name("Unknown")
-{
+Zombie::~Zombie() {};
 
-}
+Zombie::Zombie () : name("Unknown") {}
 
-Zombie::Zombie (std::string name) : name(name)
-{
-
-}
+Zombie::Zombie (const std::string name) : name(name) {}

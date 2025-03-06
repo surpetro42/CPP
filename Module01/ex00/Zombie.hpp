@@ -9,13 +9,13 @@ class Zombie
 private:
     std::string name;
 public:
-    void SetName(std::string value);
-    std::string GetName();
-    void    announce(void);
+    Zombie(std::string);
+    ~Zombie();
+
+    const   std::string& GetName() const;
+    void    SetName(const std::string& value);
+    std::string GetName(void);
+    void    announce(void) const;
 };
-
-Zombie* newZombie( std::string name );
-void randomChump( std::string name );
-
 
 #endif 
