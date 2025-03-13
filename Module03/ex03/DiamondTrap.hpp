@@ -13,7 +13,7 @@ private:
 	std::string name;
 
 public:
-
+    DiamondTrap ();
     DiamondTrap (std::string);
     DiamondTrap &operator=(const ClapTrap &);
     ~DiamondTrap();

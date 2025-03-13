@@ -10,10 +10,11 @@ class Weapon
 private:
     std::string type;
 public:
+	Weapon (const std::string& value);
     Weapon();
-	Weapon (std::string value);
-    std::string GetName();
-    void setType(std::string value);
+    ~Weapon();
+    const std::string& GetName() const;
+    void setType(const std::string& value);
 };
 
 #endif

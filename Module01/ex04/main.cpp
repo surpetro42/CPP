@@ -1,11 +1,5 @@
 #include "ex04.hpp"
 
-
-#include "ex04.hpp"
-
-
-#include "ex04.hpp"
-
 int main()
 {
     std::string s1, s2, filename;

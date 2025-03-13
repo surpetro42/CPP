@@ -3,10 +3,15 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
+DiamondTrap::DiamondTrap() 
+{
+	std::cout << "Default constructor called" << std::endl;
+}
+
 void DiamondTrap::whoAmI()
 {
 	std::cout << "DiamondTrap name: " << name << std::endl;
-	std::cout << "ClapTrap name: " << ClapTrap::name << std::endl;
+	std::cout << "DiamondTrap name: " << ClapTrap::name << std::endl;
 }
 
 DiamondTrap::DiamondTrap(std::string D_name)
@@ -17,4 +22,7 @@ DiamondTrap::DiamondTrap(std::string D_name)
 	attack_damage = FragTrap::attack_damage;
 }
 
-DiamondTrap::~DiamondTrap() {};
+DiamondTrap::~DiamondTrap()
+{
+	std::cout << "DiamondTrap " << name << " destroyed!" << std::endl;
+};

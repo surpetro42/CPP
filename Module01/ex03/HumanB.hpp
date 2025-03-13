@@ -11,11 +11,12 @@ class HumanB
 private:
 	std::string name;
 	std::string type;
-	Weapon		weapon;
+	const Weapon		*weapon;
 public:
-	HumanB	(std::string value);
-	void	setWeapon(Weapon club);
-	void	attack();
+	HumanB	(const std::string& value);
+	~HumanB();
+	void	setWeapon(const Weapon *club);
+	void	attack() const;
 };
 
 #endif

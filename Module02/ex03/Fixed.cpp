@@ -1,5 +1,16 @@
 #include "Fixed.hpp"
 
+void Fixed::setRawBits( int const raw )
+{
+	fixed_point = raw;
+}
+
+int Fixed::getRawBits( void ) const
+{
+    // std::cout << "getRawBits member function called" << std::endl;
+	return fixed_point;
+}
+
 Fixed &Fixed::operator--()
 {
     --fixed_point;
@@ -11,26 +22,36 @@ Fixed &Fixed::operator++()
     return *this;
 }
 
-Fixed Fixed::operator++(int)
+const Fixed Fixed::operator++(int)
 {
     Fixed tmp(*this);
     this->fixed_point++;
     return tmp;
 }
 
-Fixed Fixed::operator--(int)
+const Fixed Fixed::operator--(int)
 {
     Fixed tmp(*this);
     this->fixed_point--;
     return tmp;
 }
 
-Fixed Fixed::operator*(Fixed const &other)
+const Fixed	Fixed::operator+(const Fixed& other) const
+{
+    return Fixed(this->toFloat() + other.toFloat());
+}
+
+const Fixed	Fixed::operator-(const Fixed& other) const
+{
+    return Fixed(this->toFloat() - other.toFloat());
+}
+
+const Fixed Fixed::operator*(Fixed const &other) const
 {
     return Fixed(this->toFloat() * other.toFloat());
 }
 
-Fixed Fixed::operator/(Fixed const &other)
+const Fixed Fixed::operator/(Fixed const &other) const
 {
     return Fixed(this->toFloat() / other.toFloat());
 }
@@ -134,7 +155,7 @@ std::ostream &operator<<(std::ostream &out, const Fixed &f)
 
 Fixed &Fixed::operator = (const Fixed &copy) {
     if (this != &copy)
-        this->fixed_point = copy.fixed_point;
+        this->fixed_point = copy.getRawBits();
     // std::cout << "Copy assignment operator called" << std::endl;
     return *this;
 }

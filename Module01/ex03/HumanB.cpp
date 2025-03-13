@@ -3,18 +3,19 @@
 #include "HumanA.hpp"
 #include "Weapon.hpp"
 
-void	HumanB::attack()
+void	HumanB::attack() const
 {
-	std::cout << name << " attacks with their " << weapon.GetName() << std::endl;
+	std::cout << name << " attacks with their " << weapon->GetName() << std::endl;
 }
 
-HumanB::HumanB(std::string value)
+HumanB::HumanB(const std::string& value) : name(value)
 {
-	name = value;
-	std::cout << "HumanB " << name << " was created with their " << weapon.GetName() << std::endl;
+	std::cout << "HumanB " << name << " was created " << std::endl;
 }
 
-void	HumanB::setWeapon(Weapon club)
+void	HumanB::setWeapon(const Weapon *club)
 {
 	weapon = club;
 }
+
+HumanB::~HumanB(){};

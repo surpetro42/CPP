@@ -11,7 +11,6 @@ void randomChump(std::string name)
     zombie.announce();
 }
 
-
 int main()
 {
     Zombie *zombie;

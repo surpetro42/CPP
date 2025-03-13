@@ -7,18 +7,17 @@ Weapon::Weapon()
 
 }
 
-Weapon::Weapon(std::string value)
-{
-	type = value;
-}
+Weapon::Weapon(const std::string& value) : type(value) {}
 
-void Weapon::setType(std::string value)
+void Weapon::setType(const std::string& value)
 {
 	type = value;
 	std::cout << type << std::endl;
 }
 
-std::string	Weapon::GetName()
+const std::string&	Weapon::GetName() const
 {
 	return (type);
 }
+
+Weapon::~Weapon(){};

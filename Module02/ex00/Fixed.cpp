@@ -17,15 +17,15 @@ Fixed::Fixed() : fixed_point(0)
 }
 
 Fixed::Fixed(const Fixed &copy) {
-    *this = copy;
     std::cout << "Copy constructor called" << std::endl;
+    *this = copy;
 }
 
-Fixed &Fixed::operator = (const Fixed &copy)
+Fixed &Fixed::operator=(const Fixed &copy)
 {
-    if (this != &copy)
-        this->fixed_point = copy.fixed_point;
     std::cout << "Copy assignment operator called" << std::endl;
+    if (this != &copy)
+        this->fixed_point = copy.getRawBits();
     return *this;
 }
 

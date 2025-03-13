@@ -16,27 +16,38 @@ public:
 	int toInt() const;
     float toFloat() const; 
 
+	int getRawBits( void ) const;
+	void setRawBits( int const raw );
+
 	static Fixed& max(Fixed &, Fixed &);
 	static Fixed& min(Fixed &, Fixed &);
 	static const Fixed& max(const Fixed &, const Fixed &);
 	static const Fixed& min(const Fixed &, const Fixed &);
+	
 	Fixed ();
 	Fixed (float nbr);
 	Fixed (int nbr);
 	Fixed (const Fixed &copy);
+
 	Fixed &operator = (const Fixed &);
 	Fixed &operator ++ ();
 	Fixed &operator -- ();
-	Fixed operator ++ (int);
-	Fixed operator -- (int);
-	Fixed operator * (const Fixed&);
-	Fixed operator / (const Fixed&);
+
+	const Fixed operator ++ (int);
+	const Fixed operator -- (int);
+
+	const Fixed	operator+(const Fixed&) const;
+	const Fixed	operator-(const Fixed&) const;
+	const Fixed operator * (const Fixed&) const;
+	const Fixed operator / (const Fixed&) const;
+
 	bool operator > (const Fixed&);
 	bool operator < (const Fixed&);
 	bool operator >= (const Fixed&);
 	bool operator <= (const Fixed&);
 	bool operator == (const Fixed&);
 	bool operator != (const Fixed&);
+
 	~Fixed();
 
 };

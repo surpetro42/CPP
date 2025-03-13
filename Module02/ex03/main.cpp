@@ -10,7 +10,8 @@ int main( void )
 	const Point c(0, 10);
 	const Point point(1, 1);
 
-	std::cout << "The point( x= " << point.X() << "\t\ty= " << point.Y() << "\t) is inside the triangle\n" <<
+	std::cout << "The point( x= " << point.X() << "\t\ty= "
+	<< point.Y() << "\t) is inside the triangle\n" <<
 	"\ta( x= " << a.X() << "\t\ty= " << a.Y() << "\t)\n" <<
 	"\tb( x= " << b.X() << "\ty= " << b.Y() << "\t)\n" <<
 	"\tc( x= " << c.X() << "\t\ty= " << c.Y() << "\t)\n" << std::endl;

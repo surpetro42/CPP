@@ -1,4 +1,5 @@
 #include "Zombie.hpp"
+#include <algorithm>
 
 Zombie* zombieHorde(int N, std::string name)
 {
@@ -7,6 +8,7 @@ Zombie* zombieHorde(int N, std::string name)
 	zombie = new Zombie[N]();
 	while (i < N)
 	{
+		std::cout << "creates zombies" << std::endl;
 		zombie[i].SetName(name);
 		i++;
 	}

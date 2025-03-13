@@ -4,7 +4,6 @@
 
 int main()
 {
-
 	ClapTrap clap("Clappy");
 	clap.attack("Demon");
 	clap.takeDamage(5);

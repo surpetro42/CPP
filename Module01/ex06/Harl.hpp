@@ -6,7 +6,14 @@
 #include <regex>
 #include <string>
 
-void debug( void );
-void info( void );
-void warning( void );
-void error( void );
+
+class Harl
+{
+private:
+	void debug( void );
+	void info( void );
+	void warning( void );
+	void error( void );
+public:
+	void	complain(const std::string &);
+};

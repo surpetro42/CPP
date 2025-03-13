@@ -15,13 +15,14 @@ private:
 public:
 	int toInt() const;
     float toFloat() const; 
+	int getRawBits( void ) const;
+	void setRawBits( int const raw );
 	Fixed ();
-	Fixed (float nbr);
-	Fixed (int nbr);
+	Fixed (const float nbr);
+	Fixed (const int nbr);
 	Fixed (const Fixed &copy);
 	Fixed &operator = (const Fixed &copy);
 	~Fixed();
 };
 
 std::ostream &operator<<(std::ostream &out, const Fixed &f);
-

@@ -16,11 +16,11 @@ protected:
 	unsigned int attack_damage;
 
 public:
-
+	ClapTrap ();
 	ClapTrap (std::string);
     ClapTrap (const ClapTrap &);
     ClapTrap &operator=(const ClapTrap &);
-    ~ClapTrap();
+    virtual ~ClapTrap();
 	
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);

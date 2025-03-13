@@ -11,12 +11,13 @@ class HumanA
 private:
 	std::string name;
     std::string type;
-	Weapon		weapon;
+	const Weapon	&weapon;
 public:
-	void	setType(std::string value);
 	HumanA();
-    HumanA (std::string value, Weapon weapon);
-	void attack();
+    HumanA (const std::string &value, const Weapon &) ;
+	void	setType(const std::string& value);
+	~HumanA();
+	void	attack();
 };
 
 #endif

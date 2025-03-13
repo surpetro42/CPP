@@ -2,12 +2,17 @@
 #include "ScavTrap.hpp"
 #include "ClapTrap.hpp"
 
+FragTrap::FragTrap() 
+{
+	std::cout << "Default constructor called" << std::endl;
+}
+
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	hit_points = 100;
 	energy_points = 100;
 	attack_damage = 20;
-	std::cout << "ScavTrap " << name << " created!" << std::endl;
+	std::cout << "FragTrap " << name << " created!" << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
@@ -30,4 +35,7 @@ void FragTrap::highFivesGuys()
 	std::cout << "FragTrap" << name << "He says: Give me five, guys!" << std::endl;
 }
 
-FragTrap::~FragTrap() {};
+FragTrap::~FragTrap()
+{
+	std::cout << "FragTrap " << name << " destroyed!" << std::endl;
+};
