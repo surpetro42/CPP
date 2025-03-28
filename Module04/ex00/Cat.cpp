@@ -2,11 +2,11 @@
 
 Cat::Cat()
 {
-	Animal::type = "Cat";
+	type = "Cat";
 	std::cout << "Cat constructor called" << std::endl;
 }
 
-Cat::Cat(const Cat &copy) : type(copy.type)
+Cat::Cat(const Cat &copy) : Animal(copy)
 {
 	std::cout << "Cat Copy constructor called" << std::endl;
 }

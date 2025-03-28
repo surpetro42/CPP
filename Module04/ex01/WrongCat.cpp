@@ -3,7 +3,7 @@
 
 WrongCat::WrongCat()
 {
-	WrongAnimal::type = "WrongCat";
+	type = "WrongCat";
 	std::cout << "WrongCat constructor called" << std::endl;
 }
 
@@ -12,7 +12,7 @@ std::string WrongCat::getType() const
 	return WrongCat::type;
 }
 
-WrongCat::WrongCat(const WrongCat &copy)
+WrongCat::WrongCat(const WrongCat &copy) : WrongAnimal(copy)
 {
 	std::cout << "WrongCat Copy constructor called" << std::endl;
 	*this = copy;

@@ -5,12 +5,12 @@
 
 Dog::Dog()
 {
-	Animal::type = "Dog";
+	type = "Dog";
 	_isBrain = new Brain;
 	std::cout << "Dog constructor called" << std::endl;
 }
 
-Dog::Dog(const Dog &copy)
+Dog::Dog(const Dog &copy) : Animal(copy)
 {
 	std::cout << "Dog Copy constructor called" << std::endl;
 	this->type = copy.type;

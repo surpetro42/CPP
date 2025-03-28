@@ -3,7 +3,6 @@
 #include <iostream>
 #include <cctype>
 #include <fstream>
-#include <regex>
 #include <string>
 
 class Fixed

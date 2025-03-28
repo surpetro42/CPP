@@ -4,7 +4,6 @@
 #include <iostream>
 #include <cctype>
 #include <fstream>
-#include <regex>
 #include <cmath>
 
 class Animal
