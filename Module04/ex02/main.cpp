@@ -8,7 +8,7 @@ void	test_constructor()
 {
 	std::cout << "----- Test Constructors and Destructors START -----" << std::endl;
 	const Animal* meta = new Dog();
-	const Animal* x = new Dog();
+	const Animal* x;
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 
@@ -75,8 +75,8 @@ void test_copy_assignment()
 	
 
 	WrongAnimal WrongCopyCat = WrongCat();
-	Animal *copyDog = new Dog();
-	Animal *CopyCat = new Cat();
+	Animal *copyDog;
+	Animal *CopyCat;
 
 	copyDog = originalCat;
 	CopyCat = originalDog;

@@ -8,7 +8,7 @@ void	test_constructor()
 {
 	std::cout << "----- Test Constructors and Destructors START -----" << std::endl;
 	const Animal* meta = new Animal();
-	const Animal* x = new Dog();
+	const Animal* x;
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 
@@ -21,13 +21,11 @@ void	test_constructor()
 	std::cout << "Cat type: " << x->getType() << std::endl;
 	x->makeSound();
 
-
 	delete(meta);
 	delete(i);
 	delete(j);
 	// delete(x);
 
-	
 	const WrongAnimal* WrongMeta = new WrongAnimal();
 	const WrongAnimal* WrongI = new WrongCat();
 
