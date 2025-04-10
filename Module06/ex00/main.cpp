@@ -1,0 +1,12 @@
+#include "ScalarConverter.hpp"
+
+int main(int argc, char **argv)
+{
+    if(argc == 2)
+    {
+        ScalarConverter::convert(argv[1]);
+    }
+    else
+        std::cout << "There must be one argument." << std::endl;
+    return 0;
+}
