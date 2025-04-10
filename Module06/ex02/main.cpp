@@ -58,9 +58,8 @@ int main()
 {
     srand(time(0));
     Base *cls = generate();
-    Base obj;
-    identify(&obj);
-    identify(obj);
+    identify(cls);
+    identify(*cls);
     delete cls;
     return 0;
 }
