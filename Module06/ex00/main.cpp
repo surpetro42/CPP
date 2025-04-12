@@ -10,3 +10,4 @@ int main(int argc, char **argv)
         std::cout << "There must be one argument." << std::endl;
     return 0;
 }
+
