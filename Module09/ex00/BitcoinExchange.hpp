@@ -1,12 +1,14 @@
 #pragma once
 
 #include <iostream>
-#include <exception>
 #include <fstream>
-#include <stdexcept>
-#include <vector>
-#include <cstdlib>
+#include <sstream>
+#include <list>
 #include <map>
+#include <string>
+#include <cstdlib>
+#include <cctype>
+
 
 class BitcoinExchange
 {
@@ -18,8 +20,7 @@ public:
     BitcoinExchange& operator=(const BitcoinExchange &);
     ~BitcoinExchange ();
 
-    // void loadDatabase(const std::string& filename);
-    // float getRateForDate(const std::string& date) const;
-
-    void processInputFile(const std::string& filename);
+    bool isValidDateFormat(const std::string& date);
+    void processInputFile(const std::string& filenameTxt);
+    void processDataFile(const std::string& filenameCsv);
 };

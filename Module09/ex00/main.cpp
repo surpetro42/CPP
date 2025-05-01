@@ -4,8 +4,9 @@ int main(int argc, char **argv)
 {
     if(argc == 2)
     {
-        BitcoinExchange bitcoin;
-        bitcoin.processInputFile(argv[1]);
+        BitcoinExchange btc;
+        btc.processDataFile("data.csv");
+        btc.processInputFile(argv[1]);
     }
     else
     {

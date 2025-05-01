@@ -22,7 +22,7 @@ Span::~Span () {};
 void    Span::addNumber(unsigned int n)
 {
     if (_nbr.size() >= _N)
-        throw std::overflow_error("The number exceeds _N");
+        
     _nbr.push_back(n);
 }
 void    Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
