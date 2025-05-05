@@ -26,7 +26,7 @@ int RPN::arithmetic_operation(const std::string &operatro)
         _stack.pop();
     int lower = _stack.top();
         _stack.pop();
-    
+
     if (operatro == "+")
         return lower + upper;
     if (operatro == "-")
@@ -49,8 +49,8 @@ int RPN::arithmetic_operation(const std::string &operatro)
 void RPN::assign(const std::string &expression)
 {
     char *elem;
-    long nb;
-    int res;
+    int nb;
+    long long res;
 
     char *exprCopy = new char[expression.size() + 1];
     std::strcpy(exprCopy, expression.c_str());
@@ -62,9 +62,12 @@ void RPN::assign(const std::string &expression)
 
         if (token.find_first_not_of("0123456789") == std::string::npos)
         {
-            nb = std::strtol(token.c_str(), NULL, 10);
-            if (nb > INT_MAX)
-                std::cout << "The number exceeds INT_MAX or is negative" << std::endl;
+            nb = std::atoi(token.c_str());
+            if (nb >= 10)
+            {
+                std::cout << "The number exceeds 9" << std::endl;
+                return;
+            }
             _stack.push(nb);
         }
         else if (token.length() == 1 && std::string("+-*/").find(token) != std::string::npos)
@@ -77,6 +80,7 @@ void RPN::assign(const std::string &expression)
             catch (const std::exception &)
             {
                 delete[] exprCopy;
+                std::cerr << "Error: invalid token => " << token << std::endl;
                 return;
             }
         }

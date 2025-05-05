@@ -9,6 +9,12 @@
 #include <cstdlib>
 #include <cctype>
 
+struct DateParts
+{
+    int year;
+    int month;
+    int day;
+};
 
 class BitcoinExchange
 {
